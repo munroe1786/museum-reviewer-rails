@@ -39,5 +39,13 @@ class MuseumsController < ApplicationController
         redirect_to museums_path
     end
 
-    
+    private
+
+    def set_museum
+        @museum = Museum.find(params[:id])
+    end 
+
+    def museum_params
+        params.require(:museum).permit(:name, :location)
+    end
 end
