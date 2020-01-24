@@ -21,4 +21,23 @@ class MuseumsController < ApplicationController
             render :new
         end
     end
+
+    def edit
+    end
+
+    def update
+        if @museum.update(museum_params)
+            flash[:success] = "Museum successfully updated"
+            redirect_to museum_path(@museum)
+        else
+            render :edit
+        end
+    end
+
+    def destroy
+        @museum.destroy
+        redirect_to museums_path
+    end
+
+    
 end
