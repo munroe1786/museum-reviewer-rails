@@ -21,4 +21,25 @@ class ReviewsController < ApplicationController
             render :new
         end
     end
+
+    def edit
+    end
+
+    def update
+        if @review.update(review_params)
+            flash[:success] = "Review successfully updated"
+            redirect_to review_path(@review)
+        else
+            render :edit
+        end
+    end
+
+    def destroy
+        @review.destroy
+        redirect_to reviews_path
+    end
+
+    private
+
+
 end
