@@ -1,0 +1,15 @@
+<%= form_for @review do |f| %>
+    <p>
+    <%= f.label :date_visited %>
+    <%= f.text_field :date_visited %>
+    </p>
+    <p>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    </p>
+    <p>
+    <%= f.label :rating %>
+    <%= f.text_field :rating %>
+    </p>
+    <%= f.submit %>
+<% end %>
