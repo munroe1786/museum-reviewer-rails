@@ -10,22 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_24_032301) do
+ActiveRecord::Schema.define(version: 2020_01_24_030641) do
 
   create_table "museums", force: :cascade do |t|
     t.string "name"
     t.string "location"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.string "date_visited"
-    t.text "content"
-    t.integer "rating"
-    t.integer "user_id"
-    t.integer "museum_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
