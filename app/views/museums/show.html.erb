@@ -1,3 +1,11 @@
 <h1><%= "#{@museum.name} #{@museum.location}" %></h1>
 <p>Museum: <%= @museum.name %></p>
+
+<%= link_to "New Review", new_museum_review_path(@museum) %>
+
+<p>Reviews:</p>
+<% @museum.reviews.each do |review| %>
+    <div><%= review.content %></div>
+<% end %>
+
 <%= link_to("Delete Museum", museum_path(@museum), data: {method: :delete, confirm: "Are you sure you want to delete this museum?"}) %>

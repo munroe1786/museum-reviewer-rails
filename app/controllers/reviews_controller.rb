@@ -1,8 +1,13 @@
 class ReviewsController < ApplicationController
     before_action :set_review, only: [:show, :edit, :update, :destroy]
+    before_action :set_museum
 
     def index
-        @reviews = Review.all 
+        if @museum
+            @reviews = @museum.reviews
+        else
+            @reviews = Review.all
+        end
     end
 
     def show
@@ -13,7 +18,7 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        @review = Review.new(review_params)
+        @review = current_user.reviews.build(review_params)
         if @review.save
             flash[:success] = "Review successfully created"
             redirect_to reviews_path
@@ -45,8 +50,12 @@ class ReviewsController < ApplicationController
         @review = Review.find(params[:id])
     end
 
+    def set_museum
+        @museum = Museum.find_by_id(params[:museum_id])
+    end
+
     def review_params
-        params.require(:review).permit(:date_visited, :content, :rating)
+        params.require(:review).permit(:museum_id, :date_visited, :content, :rating)
     end
 
 end
