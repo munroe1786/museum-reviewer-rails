@@ -13,7 +13,7 @@ class MuseumsController < ApplicationController
     end
 
     def create
-        @museum = Museum.new(museum_params)
+        @museum = current_user.museums.build(museum_params)
         if @museum.save
             flash[:success] = "Museum sucessfully created"
             redirect_to museums_path

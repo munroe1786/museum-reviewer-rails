@@ -6,7 +6,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.integer :rating
       t.integer :user_id, foreign_key: true
       t.integer :museum_id, foreign_key: true
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
