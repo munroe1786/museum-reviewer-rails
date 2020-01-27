@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
         @review = current_user.reviews.build(review_params)
         if @review.save
             flash[:success] = "Review successfully created"
-            redirect_to reviews_path
+            redirect_to museum_path(museum)
         else
             render :new
         end
@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
     private
 
     def set_review
-        @review = Review.find(params[:id])
+        @review = Review.find_by_id(params[:id])
     end
 
     def set_museum
