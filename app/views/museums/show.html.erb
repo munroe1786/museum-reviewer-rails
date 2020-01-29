@@ -5,6 +5,7 @@
     <p>Date of visit:<%= review.date_visited %></p>
     <p>Review:<%= review.content %></p>
     <p>Rating:<%= review.rating %></p>
+    <%= link_to "Edit Review", edit_museum_review_path(@review) %>
 <% end %>
 <p>
 <%= link_to "New Review", new_museum_review_path(@museum) %>

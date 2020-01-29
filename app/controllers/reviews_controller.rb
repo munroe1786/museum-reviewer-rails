@@ -35,7 +35,8 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        if @review.update(review_params)
+        @review = current_user.reviews.build(review_params)
+        if @review.update
             flash[:success] = "Review successfully updated"
             redirect_to review_path(@review)
         else
