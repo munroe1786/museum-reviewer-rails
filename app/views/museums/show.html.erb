@@ -2,6 +2,15 @@
 
 <p><h3>Reviews:</h3></p>
 <% @museum.reviews.each do |review| %>
+    <% if review.user.username.present? %>
+        <%= review.user.username %>
+        <ul>
+            <li> <%= review.date_visited %></li>
+            <li> <%= review.content %></li>
+            <li> <%= review.rating %></li>
+        </ul>
+    <% else %>
+        <%= review.user.name %>
     <p>Date of visit:<%= review.date_visited %></p>
     <p>Review:<%= review.content %></p>
     <p>Rating:<%= review.rating %></p>
