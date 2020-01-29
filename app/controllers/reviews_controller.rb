@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before_action :set_review, only: [ :index, :create, :edit, :update, :destroy]
+    before_action :set_review, only: [ :index, :show, :create, :edit, :update, :destroy]
     before_action :set_museum
 
     def index

@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :museums, through: :reviews
   has_many :reviewed_museums, through: :reviews, source: :museum
+  validates :username, presence: true, uniqueness: true, length: {minimum: 5}, on: :create
 end

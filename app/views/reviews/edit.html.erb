@@ -1,4 +1,5 @@
 <%= form_for @review do |f| %>
+    <%= f.hidden_field :museum_id %>
     <p>
     <%= f.label :date_visited %>
     <%= f.text_field :date_visited %>

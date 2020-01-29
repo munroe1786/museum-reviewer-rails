@@ -6,7 +6,7 @@ class MuseumsController < ApplicationController
     end
 
     def show
-        @review = @museum.reviews.build
+        
     end
 
     def new

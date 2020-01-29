@@ -1,22 +1,19 @@
-<h2><%= "#{@museum.name} #{@museum.location}" %></h2>
+<h1>
+    <strong>Museum Name:</strong>
+    <%= @museum.name %>
+</h1>
+<p>
+    <strong>Location:</strong>
+    <%= @museum.location %>
+</p>
 
-<p><h3>Reviews:</h3></p>
+<p>Reviews:</p>
 <% @museum.reviews.each do |review| %>
-    <% if review.username.present? %>
-        <%= review.user.username %>
         <ul>
             <li> <%= review.date_visited %></li>
             <li> <%= review.content %></li>
             <li> <%= review.rating %></li>
         </ul>
-    <% else %>
-        <%= review.user.username %>
-        <ul>
-            <li> <%= review.date_visited %></li>
-            <li> <%= review.content %></li>
-            <li> <%= review.rating %></li>
-        </ul>
-    <% end %>
     <% if review.user == current_user %>
         <%= link_to "Edit Review", edit_museum_review_path(@museum) %>
     <% end %>
