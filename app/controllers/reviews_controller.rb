@@ -14,14 +14,18 @@ class ReviewsController < ApplicationController
     end
 
     def new
-        @review = Review.new
+        if @museum
+            @review = @museum.reviews.build
+        else
+            @review = Review.new
+        end
     end
 
     def create
         @review = current_user.reviews.build(review_params)
         if @review.save
             flash[:success] = "Review successfully created"
-            redirect_to museum_path(museum)
+            redirect_to museum_path(@review.museum)
         else
             render :new
         end
