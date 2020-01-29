@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before_action :set_review, only: [:show, :edit, :update, :destroy]
+    before_action :set_review, only: [ :index, :create, :edit, :update, :destroy]
     before_action :set_museum
 
     def index
@@ -8,9 +8,6 @@ class ReviewsController < ApplicationController
         else
             @reviews = Review.all
         end
-    end
-
-    def show
     end
 
     def new
@@ -35,10 +32,10 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        @review = current_user.reviews.build(review_params)
-        if @review.update
+        if @review
+            @review.update(review_params)
+            redirect_to museum_path(@review.museum_id)
             flash[:success] = "Review successfully updated"
-            redirect_to review_path(@review)
         else
             render :edit
         end

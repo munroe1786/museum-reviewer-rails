@@ -2,7 +2,7 @@
 
 <p><h3>Reviews:</h3></p>
 <% @museum.reviews.each do |review| %>
-    <% if review.user.username.present? %>
+    <% if review.username.present? %>
         <%= review.user.username %>
         <ul>
             <li> <%= review.date_visited %></li>
@@ -10,17 +10,23 @@
             <li> <%= review.rating %></li>
         </ul>
     <% else %>
-        <%= review.user.name %>
-    <p>Date of visit:<%= review.date_visited %></p>
-    <p>Review:<%= review.content %></p>
-    <p>Rating:<%= review.rating %></p>
-    <%= link_to "Edit Review", edit_museum_review_path(@review) %>
+        <%= review.user.username %>
+        <ul>
+            <li> <%= review.date_visited %></li>
+            <li> <%= review.content %></li>
+            <li> <%= review.rating %></li>
+        </ul>
+    <% end %>
+    <% if review.user == current_user %>
+        <%= link_to "Edit Review", edit_museum_review_path(@museum) %>
+    <% end %>
 <% end %>
 <p>
 <%= link_to "New Review", new_museum_review_path(@museum) %>
 </p>
 <p>
 <%= link_to "Edit Museum", edit_museum_path(@museum) %>
+</p>
 <p>
 <%= link_to("Delete Museum", museum_path(@museum), data: {method: :delete, confirm: "Are you sure you want to delete this museum?"}) %>
 </p>

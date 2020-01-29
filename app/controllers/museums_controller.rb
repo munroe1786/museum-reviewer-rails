@@ -6,6 +6,7 @@ class MuseumsController < ApplicationController
     end
 
     def show
+        @review = @museum.reviews.build
     end
 
     def new
@@ -27,8 +28,8 @@ class MuseumsController < ApplicationController
 
     def update
         if @museum.update(museum_params)
-            flash[:success] = "Museum successfully updated"
             redirect_to museum_path(@museum)
+            flash[:success] = "Museum successfully updated"
         else
             render :edit
         end
@@ -42,7 +43,7 @@ class MuseumsController < ApplicationController
     private
 
     def set_museum
-        @museum = Museum.find(params[:id])
+        @museum = Museum.find_by(id: params[:id])
     end 
 
     def museum_params
