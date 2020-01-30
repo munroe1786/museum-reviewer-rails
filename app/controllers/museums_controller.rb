@@ -1,8 +1,13 @@
 class MuseumsController < ApplicationController
     before_action :set_museum, only: [:show, :edit, :update, :destroy]
+    before_action :set_user
 
     def index
-        @museums = Museum.all
+        if @user
+            @museums = @user.museums
+        else
+            @museums = Museum.all
+        end
     end
 
     def show
@@ -10,11 +15,15 @@ class MuseumsController < ApplicationController
     end
 
     def new
-        @museum = Museum.new
+        if @user
+            @museum = @user.museums.build
+        else
+            @museum = Museum.new
+        end
     end
 
     def create
-        @museum = Museum.new(museum_params)
+        @museum = current_user.museums.build(museum_params)
         if @museum.save
             flash[:success] = "Museum sucessfully created"
             redirect_to museums_path
@@ -45,10 +54,14 @@ class MuseumsController < ApplicationController
     private
 
     def set_museum
-        @museum = Museum.find_by(id: params[:id])
+        @museum = Museum.find_by_id(params[:id])
     end 
 
+    def set_user
+        @user = User.find_by_id(params[:user_id])
+    end
+
     def museum_params
-        params.require(:museum).permit(:name, :location)
+        params.require(:museum).permit(:user_id, :name, :location)
     end
 end
