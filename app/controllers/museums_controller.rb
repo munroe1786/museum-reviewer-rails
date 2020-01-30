@@ -1,13 +1,8 @@
 class MuseumsController < ApplicationController
-    before_action :set_museum, only: [:show, :edit, :update, :destroy]
-    before_action :set_user
+    before_action :set_museum, only: [:show, :new , :create, :edit, :update, :destroy]
 
     def index
-        if @user
-            @museums = @user.museums
-        else
-            @museums = Museum.all
-        end
+        @museums = Museum.all
     end
 
     def show
@@ -15,11 +10,7 @@ class MuseumsController < ApplicationController
     end
 
     def new
-        if @user
-            @museum = @user.museums.build
-        else
-            @museum = Museum.new
-        end
+        @museum = current_user.museums.build
     end
 
     def create
@@ -57,11 +48,7 @@ class MuseumsController < ApplicationController
         @museum = Museum.find_by_id(params[:id])
     end 
 
-    def set_user
-        @user = User.find_by_id(params[:user_id])
-    end
-
     def museum_params
-        params.require(:museum).permit(:user_id, :name, :location)
+        params.require(:museum).permit(:name, :location)
     end
 end

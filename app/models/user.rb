@@ -4,8 +4,8 @@ class User < ApplicationRecord
   validates :email, presence: true
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[github]
+  has_many :museums
   has_many :reviews, dependent: :destroy
-  has_many :museums, through: :reviews
   has_many :reviewed_museums, through: :reviews, source: :museum
   validates :username, presence: true, uniqueness: true, length: {minimum: 5}, on: :create
 
