@@ -2,6 +2,11 @@
 <h2>Click on a museum to read reviews or write your own.  Or scroll down to add a new museum.</h2>
 <% @museums.each do |museum| %>
     <p><%= link_to "#{museum.name} #{museum.location}", museum_path(museum) %></p>
-<% end %>
+        <% if @museums.user_id == current_user %>
+            <%= link_to "Back", museums_path %>
+            <%= link_to "Edit Museum", edit_museum_path(@museum) %>
+            <%= link_to("Delete Museum", museum_path(@museum), data: {method: :delete, confirm: "Are you sure you want to delete this museum?"}) %>
+        <% end %>
+    <% end %>
 <h2>Create new museum</h2>
     <%= link_to 'New Museum', new_museum_path %>

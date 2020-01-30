@@ -27,8 +27,7 @@ class MuseumsController < ApplicationController
     end
 
     def update
-        if @museum.users == current_user
-            @museum.update(museum_params)
+        if @museum.update(museum_params)
             redirect_to museum_path(@museum)
             flash[:success] = "Museum successfully updated"
         else
