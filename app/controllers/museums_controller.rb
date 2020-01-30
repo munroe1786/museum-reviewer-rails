@@ -36,8 +36,10 @@ class MuseumsController < ApplicationController
     end
 
     def destroy
-        @museum.destroy
-        redirect_to museums_path
+        if @museum.destroy
+            redirect_to museums_path
+            flash[:success] = "Museum successfully deleted"
+        end
     end
 
     private
