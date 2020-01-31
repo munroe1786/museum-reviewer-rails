@@ -55,6 +55,6 @@ class MuseumsController < ApplicationController
     end
 
     def authorize_museum
-        redirect_back unless @museum.user == current_user
+        redirect_back(fallback_location: museums_path) unless @museum.user == current_user
     end
 end

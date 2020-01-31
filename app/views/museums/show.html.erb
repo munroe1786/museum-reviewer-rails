@@ -1,3 +1,4 @@
+<%= render partial: "errors", locals: {museum: @museum} %>
 <h1>
     <strong>Museum Name:</strong>
     <%= @museum.name %>
@@ -29,5 +30,3 @@
 <p>
 <%= link_to "New Review", new_museum_review_path(@museum) %>
 </p>
-
-<%= link_to("Delete Museum", museum_path(@museum), data: {method: :delete, confirm: "Are you sure you want to delete this museum?"}) %>

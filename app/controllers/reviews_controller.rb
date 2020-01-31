@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
     before_action :set_review, only: [ :index, :show, :create, :edit, :update, :destroy]
     before_action :set_museum
+    before_action :authorize_review, only: [:update, :destroy]
 
     def index
         if @museum
@@ -59,6 +60,10 @@ class ReviewsController < ApplicationController
 
     def review_params
         params.require(:review).permit(:museum_id, :date_visited, :content, :rating)
+    end
+
+    def authorize_review
+        redirect_back unless @review.user == current_user
     end
 
 end
