@@ -1,7 +1,7 @@
 <h1>Welcome to Museum Reviewer</h1>
-<h2>Click on a museum to read reviews or write your own.  Or scroll down to add a new museum.</h2>
+<h2>Click on a museum to read reviews or write your own.  Scroll down to add a new museum.</h2>
 <% @museums.each do |museum| %>
-    <p><%= link_to "#{museum.name} #{museum.location}", museum_path(museum) %></p>
+    <p><%= link_to "#{museum.name}", museum_path(museum) %></p>
     <% end %>
 <h2>Create new museum</h2>
     <%= link_to 'New Museum', new_museum_path %>

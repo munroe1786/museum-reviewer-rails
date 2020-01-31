@@ -1,28 +1,3 @@
-<% if @museum.errors.any? %>
-<div id="error_explanation">
-    <h2>
-        <%= pluralize(@museum.errors.count, "error") %>
-        prohibited this museum from being saved:
-    </h2>
-
-    <ul>
-        <% @museum.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-    </ul>
-</div>
-<% end %>
-<h1>Edit Museum</h1>
 <%= render partial: "errors", locals: {museum: @museum} %>
-
-<%= form_for @museum do |f| %>
-    <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    </p>
-    <p>
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-    </p>
-    <%= f.submit %>
-<% end %>
+<h1>Edit Museum</h1>
+<%= render partial: "form", locals: {museum: @museum} %>
