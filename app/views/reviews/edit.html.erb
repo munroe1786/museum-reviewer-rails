@@ -1,16 +1,3 @@
-<%= form_for @review do |f| %>
-    <%= f.hidden_field :museum_id %>
-    <p>
-    <%= f.label :date_visited %>
-    <%= f.text_field :date_visited %>
-    </p>
-    <p>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    </p>
-    <p>
-    <%= f.label :rating %>
-    <%= f.text_field :rating %>
-    </p>
-    <%= f.submit %>
-<% end %>
+<%= render partial: 'museums/errors', locals: {museum: @review} %>
+<h1>Edit Review</h1>
+<%= render partial: "form", locals: {review: @review} %>

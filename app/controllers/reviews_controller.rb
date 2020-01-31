@@ -33,8 +33,7 @@ class ReviewsController < ApplicationController
     end
 
     def update
-        if @review
-            @review.update(review_params)
+        if @review.update(review_params)
             redirect_to museum_path(@review.museum_id)
             flash[:success] = "Review successfully updated"
         else
@@ -63,7 +62,7 @@ class ReviewsController < ApplicationController
     end
 
     def authorize_review
-        redirect_back unless @review.user == current_user
+        redirect_back(fallback_location: museums_path) unless @review.user == current_user
     end
 
 end
