@@ -7,10 +7,15 @@
     <%= @museum.location %>
 </p>
 
-<%= link_to "Edit Museum", edit_museum_path(@museum) %>
+<% if @museum.user == current_user %>
+    <%= link_to "Back", museums_path %>
+    <%= link_to "Edit Museum", edit_museum_path(@museum) %>
+    <%= link_to("Delete Museum", museum_path(@museum), data: {method: :delete, confirm: "Are you sure you want to delete this museum?"}) %>
+<% end %>
+
 
 <p>Reviews:</p>
-<% @museum.reviews.each do |review| %>
+<% @museum.reviews.highest_rated.each do |review| %>
         <ul>
             <li>Date of Visit: <%= review.date_visited %></li>
             <li>Review: <%= review.content %></li>

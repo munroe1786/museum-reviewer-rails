@@ -1,5 +1,6 @@
 class MuseumsController < ApplicationController
     before_action :set_museum, only: [:show, :new , :create, :edit, :update, :destroy]
+    before_action :authorize_museum, only: [:update, :destroy]
 
     def index
         @museums = Museum.all
@@ -27,6 +28,7 @@ class MuseumsController < ApplicationController
     end
 
     def update
+        #binding.pry
         if @museum.update(museum_params)
             redirect_to museum_path(@museum)
             flash[:success] = "Museum successfully updated"
@@ -50,5 +52,9 @@ class MuseumsController < ApplicationController
 
     def museum_params
         params.require(:museum).permit(:name, :location)
+    end
+
+    def authorize_museum
+        redirect_back unless @museum.user == current_user
     end
 end
