@@ -1,14 +1,5 @@
 <%= render partial: "errors", locals: {museum: @museum} %>
 
-<%= form_for @museum do |f| %>
-    <%= f.hidden_field :user_id %>
-    <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    </p>
-    <p>
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-    </p>
-    <%= f.submit %>
-<% end %>
+<h1>Create a New Museum</h1>
+
+<%= render partial: "form", locals: {museum: @museum} %>
