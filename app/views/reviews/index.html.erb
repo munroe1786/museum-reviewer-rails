@@ -1,4 +1,6 @@
-<h1>All Reviews</h1>
 <% @reviews.each do |review| %>
-    <p><%= link_to "#{review.date_visited} #{review.content} #{review.rating} ", review_path(review) %></p>
+    <div>
+    <h2><%= link_to review.museum.name, museum_reviews_path(review.museum) %></h2>
+    <h3><%= review.content %></h3>
+    </div>
 <% end %>

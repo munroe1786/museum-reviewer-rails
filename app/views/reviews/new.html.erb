@@ -1,28 +1,3 @@
-<% if @review.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
- 
-    <ul>
-    <% @review.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<%= form_for @review do |f| %>
-    <%= f.hidden_field :museum_id %>
-    <p>
-    <%= f.label :date_visited %>
-    <%= f.text_field :date_visited %>
-    </p>
-    <p>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    </p>
-    <p>
-    <%= f.label :rating %>
-    <%= f.number_field :rating %>
-    </p>
-    <%= f.submit %>
-<% end %>
+<%= render partial: 'museums/errors', locals: {museum: @review} %>
+<h1>New Review</h1>
+<%= render partial: "form", locals: {review: @review} %>
