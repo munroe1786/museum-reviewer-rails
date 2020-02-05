@@ -3,7 +3,11 @@ class MuseumsController < ApplicationController
     before_action :authorize_museum, only: [:update, :destroy]
 
     def index
-        @museums = Museum.all
+        if params[:search]
+            @museums = Museum.where('name LIKE ?', "%#{params[:search]}%")
+        else
+            @museums = Museum.all
+        end
     end
 
     def show
@@ -51,7 +55,7 @@ class MuseumsController < ApplicationController
     end 
 
     def museum_params
-        params.require(:museum).permit(:name, :location)
+        params.require(:museum).permit(:name, :location, :search)
     end
 
     def authorize_museum
