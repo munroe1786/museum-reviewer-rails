@@ -255,7 +255,7 @@ DEPENDENCIES
   omniauth-github
   pry-rails
   puma (~> 4.1)
-  rack (>= 2.1.4)
+  rack (>= 2.2.3)
   rails (~> 6.0.1)
   sass-rails (>= 6)
   selenium-webdriver
