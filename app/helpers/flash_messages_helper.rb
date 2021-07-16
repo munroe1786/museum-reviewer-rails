@@ -20,7 +20,7 @@ module FlashMessagesHelper
     
         html  = "<div id='#{ id }' style='transition: opacity 0.6s ease-out' class='message #{ options[:closeable] ? 'closeable' : '' } #{ options[:type].to_s }'>"
         html += "<p>#{ message }</p>"
-        html += "<div class='close'>x</div>" if options[:closeable]
+        html += "<div class='close'></div>" if options[:closeable]
         html += "</div>"
 
         if options[:closeable]

@@ -1,4 +1,4 @@
-Welcome to the Museum Reviewer. This app allows users to add new museums, write their own reviews and also see museums and reviews that other users have created.
+Welcome to the Museum Reviewer. This app allows users to add new museums, write their own reviews and also see museums and reviews that other users have created.  A user is also able to edit and/or delete museums or reviews that belong to them.
 
 Ruby version '2.6.1'
 
@@ -12,7 +12,15 @@ Have Ruby installed in your local terminal and use Linux or Mac
 
 Deployment instructions 
 
-1- Fork and clone 2- run bundle install 3- run rails server 4- Go to http://localhost:3000/ on your browser 5- Signin using your Github account or create a new one
+1- Fork and clone 
+
+2- run bundle install 
+
+3- run rails server 
+
+4- Go to http://localhost:3000/ on your browser 
+
+5- Signin using your Github account or create a new one
 
 License This project is licensed under the MIT License:
 
