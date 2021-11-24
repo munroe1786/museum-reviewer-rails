@@ -1,3 +1,6 @@
+![andrew-neel-acowe0pCVBg-unsplash](https://user-images.githubusercontent.com/51828035/143305491-2392d18a-1c5f-4a9d-b6cb-9a26d8a6299f.jpg)
+
+
 Welcome to the Museum Reviewer. This app allows users to add new museums, write their own reviews and also see museums and reviews that other users have created.  A user is also able to edit and/or delete museums or reviews that belong to them.
 
 Ruby version '2.6.1'
